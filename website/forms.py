@@ -119,22 +119,29 @@ class IpReportForm(forms.ModelForm):
             "activity_type",
         ]
 
+
 class IssueForm(forms.ModelForm):
     captcha = CaptchaField()
 
     class Meta:
         model = Issue
-        fields = ['url', 'description', 'markdown_description', 'label']
+        fields = ["url", "description", "markdown_description", "label", "domain", "cve_id"]
         widgets = {
-            'url': forms.URLInput(attrs={
-                'class': 'w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-[#e74c3c] focus:border-transparent',
-                'placeholder': 'https://github.com/owner/repo/issues/1'
-            }),
-            'description': forms.Textarea(attrs={
-                'class': 'w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-[#e74c3c] focus:border-transparent',
-                'rows': 4,
-            }),
+            "url": forms.URLInput(
+                attrs={
+                    "class": "w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-[#e74c3c] focus:border-transparent",
+                    "placeholder": "https://github.com/owner/repo/issues/1",
+                }
+            ),
+            "description": forms.Textarea(
+                attrs={
+                    "class": "w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500",
+                    "rows": 4,
+                    "placeholder": "Describe the issue in detail...",
+                }
+            ),
         }
+
 
 class BidForm(forms.ModelForm):
     class Meta:

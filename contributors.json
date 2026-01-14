@@ -492,5 +492,18 @@
         "linkedin": "https://www.linkedin.com/in/dhruv-trivedi-06a767228/",
         "website": "https://github.com/drvcodenta",
         "bch_addr": ""
-    }
-]
+    },
+    {
+        "id": 40,
+        "img": "https://avatars.githubusercontent.com/u/766965432?v=4",
+        "name": "Savio D'souza",
+        "repository": "BLT Flutter",
+        "short_description": "Contributor @OWASP in GSoC'26 , AppSec Engineer",
+        "long_description": "",
+        "location": "Global",
+        "twitter": "",
+        "linkedin": "",
+        "website": "",
+        "bch_addr": ""
+    },
+]   

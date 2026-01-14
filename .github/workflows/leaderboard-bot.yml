@@ -414,4 +414,5 @@ jobs:
                 body: commentBody
               });
               core.info(`Posted leaderboard comment on PR #${pull_number}`);
+              pr
             }

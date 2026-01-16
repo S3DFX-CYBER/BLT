@@ -120,29 +120,6 @@ class IpReportForm(forms.ModelForm):
         ]
 
 
-class IssueForm(forms.ModelForm):
-    captcha = CaptchaField()
-
-    class Meta:
-        model = Issue
-        fields = ["url", "description", "markdown_description", "label", "domain", "cve_id"]
-        widgets = {
-            "url": forms.URLInput(
-                attrs={
-                    "class": "w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-[#e74c3c] focus:border-transparent",
-                    "placeholder": "https://github.com/owner/repo/issues/1",
-                }
-            ),
-            "description": forms.Textarea(
-                attrs={
-                    "class": "w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500",
-                    "rows": 4,
-                    "placeholder": "Describe the issue in detail...",
-                }
-            ),
-        }
-
-
 class BidForm(forms.ModelForm):
     class Meta:
         model = Bid
@@ -202,7 +179,7 @@ class GitHubIssueForm(forms.Form):
                 "placeholder": "https://github.com/owner/repo/issues/123",
             }
         ),
-        help_text=("Enter the full URL to the GitHub issue with a bounty label " "(containing a $ sign)"),
+        help_text=("Enter the full URL to the GitHub issue with a bounty label (containing a $ sign)"),
     )
 
     def clean_github_url(self):
@@ -298,7 +275,7 @@ class HackathonForm(forms.ModelForm):
                 attrs={
                     "rows": 4,
                     "class": base_input_class,
-                    "placeholder": ("Provide information about sponsorship opportunities " "for this hackathon"),
+                    "placeholder": ("Provide information about sponsorship opportunities for this hackathon"),
                 }
             ),
             "sponsor_link": forms.URLInput(
@@ -333,7 +310,7 @@ class HackathonForm(forms.ModelForm):
             ),
             "registration_open": forms.CheckboxInput(
                 attrs={
-                    "class": ("h-5 w-5 text-[#e74c3c] focus:ring-[#e74c3c] " "border-gray-300 rounded"),
+                    "class": ("h-5 w-5 text-[#e74c3c] focus:ring-[#e74c3c] border-gray-300 rounded"),
                 }
             ),
         }
@@ -509,7 +486,7 @@ class JobForm(forms.ModelForm):
 
         if not any([application_email, application_url, application_instructions]):
             raise forms.ValidationError(
-                "Please provide at least one way for candidates to apply " "(email, URL, or instructions)."
+                "Please provide at least one way for candidates to apply (email, URL, or instructions)."
             )
 
         return cleaned_data
@@ -626,4 +603,25 @@ class JobForm(forms.ModelForm):
             "application_email": "Optional: Email address where applications should be sent",
             "application_url": "Optional: Link to external application page",
             "application_instructions": "Optional: Custom instructions for applicants",
+        }
+
+
+class IssueForm(forms.ModelForm):
+    class Meta:
+        model = Issue
+        fields = ("url", "description")
+        widgets = {
+            "url": forms.URLInput(
+                attrs={
+                    "class": "w-full rounded-md border-gray-300 shadow-sm focus:border-[#e74c3c] focus:ring focus:ring-[#e74c3c] focus:ring-opacity-50 bg-white dark:bg-gray-900",
+                    "placeholder": "https://example.com/vulnerable-page",
+                }
+            ),
+            "description": forms.Textarea(
+                attrs={
+                    "class": "w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500",
+                    "rows": 4,
+                    "placeholder": "Describe the issue in detail...",
+                }
+            ),
         }

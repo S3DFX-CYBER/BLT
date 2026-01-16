@@ -214,21 +214,23 @@ class HackathonForm(forms.ModelForm):
         widget=forms.Textarea(
             attrs={
                 "rows": 3,
-                "class": (
-                    "w-full rounded-lg border-gray-300 shadow-sm focus:border-[#e74c3c] "
-                    "focus:ring focus:ring-[#e74c3c] focus:ring-opacity-50"
-                ),
-                "placeholder": "https://github.com/owner/repo1\nhttps://github.com/owner/repo2",
-            }
-        ),
-        label="New Repository URLs",
-        help_text="Enter GitHub repository URLs (one per line) to add new repositories to this hackathon",
-    )
+        widgets = {
+            "url": forms.URLInput(
+                attrs={
+                    "class": "w-full rounded-md border-gray-300 shadow-sm focus:border-[`#e74c3c`] focus:ring focus:ring-[`#e74c3c`] focus:ring-opacity-50 bg-white dark:bg-gray-900",
+                    "placeholder": "https://example.com/vulnerable-page",
+                }
+            ),
+            "description": forms.Textarea(
+                attrs={
+                    "class": "w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500",
+                    "rows": 4,
+                    "placeholder": "Describe the issue in detail...",
+                }
+            ),
+        }
 
-    class Meta:
-        model = Hackathon
-        fields = [
-            "name",
+
             "description",
             "organization",
             "start_time",
@@ -607,21 +609,24 @@ class JobForm(forms.ModelForm):
 
 
 class IssueForm(forms.ModelForm):
+    captcha = CaptchaField()
+    markdown_description = MDTextFormField(required=False)
+
     class Meta:
         model = Issue
-        fields = ("url", "description")
+        fields = [
+            "url",
+            "description",
+            "domain",
+            "label",
+            "markdown_description",
+            "cve_id",
+        ]
         widgets = {
             "url": forms.URLInput(
                 attrs={
                     "class": "w-full rounded-md border-gray-300 shadow-sm focus:border-[#e74c3c] focus:ring focus:ring-[#e74c3c] focus:ring-opacity-50 bg-white dark:bg-gray-900",
-                    "placeholder": "https://example.com/vulnerable-page",
-                }
-            ),
-            "description": forms.Textarea(
-                attrs={
-                    "class": "w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500",
-                    "rows": 4,
-                    "placeholder": "Describe the issue in detail...",
+                    "placeholder": "https://github.com/owner/repo/issues/123",
                 }
             ),
         }

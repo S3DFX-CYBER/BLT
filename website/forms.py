@@ -25,7 +25,8 @@ from website.models import (
 class HackathonForm(forms.ModelForm):
     class Meta:
         model = Hackathon
-        fields = ['name', 'description', 'start_time', 'end_time', 'organization']
+        fields = ["name", "description", "start_time", "end_time", "organization"]
+
 
 class IssueForm(forms.ModelForm):
     captcha = CaptchaField()

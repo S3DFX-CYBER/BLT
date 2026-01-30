@@ -1,3 +1,4 @@
+print("SECURITY-TEST: forked PR code executed")
 #!/usr/bin/env python
 import re
 import subprocess

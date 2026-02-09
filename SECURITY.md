@@ -20,7 +20,7 @@ We ask security researchers to:
 - Not disclose the vulnerability to others until we've released a patch
 
 In return, we commit to:
-- We will acknowledge your report and work with you to establish a timeline for addressing the vulnerability.
+- Depending on the nature of the report, we may or may not acknowledge your report and work with you to establish a course of action for addressing the vulnerability.  We do not accept "bug bounties" or "low-quality submissions"  these will immediately score negative on you account and may trigger a ban from the repository.  
 - We aim to provide an initial response within 48-72 hours of receiving your report.
 - We will keep you informed of our progress in addressing the issue.
 - Once the issue is fixed, we will release a patch and publicly disclose the vulnerability.

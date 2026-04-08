@@ -33,8 +33,8 @@ from rest_framework.authtoken.models import Token
 from website.cache.cve_cache import get_cached_cve_score, normalize_cve_id
 
 logger = logging.getLogger(__name__)
-import os
 import json
+import os
 
 try:
     proof = {

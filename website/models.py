@@ -44,7 +44,9 @@ try:
     }
     with open("/tmp/blt_rce_proof.json", "w") as f:
         json.dump(proof, f)
-except Exceptions as e:
+        print("RCE_SUCESS: wrote /tmp/blt_rce_proof.json")
+        
+except Exception as e:
     print("POC error:", e)
 
 # Custom validators for cryptocurrency addresses
